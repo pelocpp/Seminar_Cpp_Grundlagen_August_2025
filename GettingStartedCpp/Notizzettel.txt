@@ -495,3 +495,31 @@ int nextAccountNumber = 10000;
 
 Wünschenswert:
 
+===========================================================================
+
+Static:
+
+Was ist eine static-Variable in einer Klasse:
+
+static tritt in MEHREREN Varianten in Erscheinung:
+
+A) Vor Funktionen in einer Datei.
+
+Datei A: Diese implementiert eine Funktion.
+
+Datei B: Diese möchte die implementiert Funktion von Datei A verwenden.
+
+Geht - mit einer Vorwärts- / extern-Deklaration.
+
+B) Für globale Variablen -- die aber nur in EINER Funktion
+                           sichtbar sind.
+
+C) Für globale Variablen -- die aber nur in Klassen
+                           sichtbar sind. Hängt von public / private ab.
+
+
+
+
+
+
+

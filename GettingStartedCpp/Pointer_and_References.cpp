@@ -96,7 +96,10 @@ void test_pointer_references_04()
     std::cout << sizeof(Time*) << std::endl;
 }
 
-void test_pointer_references()
+// möchte nicht, dass diese Funktion in anderen Dateien verwendet wird.
+// Modularisierung
+// Hilfsfunktion // mit static markieren.
+/*static*/ void test_pointer_references()
 {
     Time now (14, 46, 0);
     Time than(14, 46, 30);
