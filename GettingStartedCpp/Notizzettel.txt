@@ -306,3 +306,192 @@ Nicht initialisierte Variablen werden (am Stack)
 mit 0xCCCC vorbelegt.
 
 =====================================================
+
+Datentyp Zeiger
+
+Datentyp Referenz
+
+Einordnung:
+-----------
+
+C:     Hier gibt es den Datentyp Zeiger (Pointer)
+       // keine Referenz
+
+C++:   Hier gibt es den Datentyp Referenz
+
+       ... und den Datentyp Zeiger (Pointer), weil C in C++ enthalten ist.
+
+
+Frage: Sollte ich dann in C++ nur Referenz .. oder Zeiger ... oder beides verwenden:
+
+       Antwort: BEIDES.
+
+       Wann ist welches Sprachmittel einzusetzen ??? 
+
+       A) Zeiger: Im Umfeld der dynamischen Speicherverwaltung (new / delete).
+
+       B) Referenz: Um bei vorhandenen Objekten durch einen Alias eine
+          Kopie zu vermeiden.
+
+=====================================================================
+
+Erfolgt // Mächtigkeit // Verbreitung von C:
+
+Datentyp Pointer ==> Adresse.
+
+Abstand Assembler // C/C++ ist gering : PERFORMANZ.
+
+=====================================================================
+
+Datentyp Pointer:
+
+2 zentrale Operatoren:
+
+&:   Adresse von
+*:   Indirekter Zugriff (mit Hilfe der Adresse) // lesend oder schreibend
+
+// ===================================================================
+
+Feature:  Adress-Arithmetik
+
+    pi++;   // die Adresse inkrementieren.
+
+Frage / Beispiel:
+
+Vorher:  Adresse 0x1024  (implizit, weil Adresse auf int: 0x1024, 0x1025, 0x1026, 0x1027)
+Nachher: Adresse 0x1028
+
+Wozu / und Wann:
+
+Ja, dieses macht Sinn: 
+
+Bei dynamischen Speicherverwaltung: Wenn mehrere, zB int-Variablen, allokiert werden.
+
+==============================================================================
+
+C:  Datentyp Zeiger: Fundament der Sprache.
+
+Hmmm, kann Fehler verursachen .. ist nicht ganz einfach im Handling.
+
+Design von C++:
+
+Geht das mit dem Zeiger einfacher / besser lesbar ???
+
+Yes: Alternative Konzept: Referenz.
+
+(( zB für die Parameterübergabe konzipert ))
+
+Feature / Eigenschaft erzwungen / berücksichtigt:
+
+   Keine Null-Referenzen.
+
+Wie kann man eine C++-Referenz definieren / beschreiben:
+
+____________________________________________________________
+Eine Referenz ist ein zweiter Name (Bezeichner / Identifier)
+für eine vorhandene Variable / Objekt.
+____________________________________________________________
+Oder:
+Eine Referenz ist ein Alias-Name (Bezeichner / Identifier)
+für eine vorhandene Variable / Objekt.
+------------------------------------------------------------
+
+Etwas technischer:
+
+Eine Referenz-Variable enthält die Adresse 
+einer vorhandenen Variable / eines vorhandenen Objekts.
+
+
+===============================================================
+
+Referenzen und const:
+
+a) Referenzen sind ein ALIAS für ein Original.
+
+b) Man kann das Original schützen:
+
+   Mit const. ==> nur lesender Zugriff möglich.
+
+Frage:
+Ist das mit dem const den Aufwand wert ????
+
+public:
+    // getter / setter
+    int  getHours() const;            // lesender Zugriff
+    void setHours(int hours);         // schreibender Zugriff
+    int  getMinutes() const;          // lesender Zugriff
+    void setMinutes(int minutes);     // schreibender Zugriff
+    int  getSeconds() const;          // lesender Zugriff
+    void setSeconds(int seconds);     // schreibender Zugriff
+
+    bool compare(const Time& other) const;
+
+Jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+Why ?????????????????????????
+
+Wenn eine Methode const deklariert ist ,
+dann hat der Optimizer mehr Möglichkeiten, "performanten" Maschinencode zu erstellen.
+
+Performanz  =======> Go for "const"
+
+Einmal "const" -- immer "const"
+
+==============================================================
+
+Übung:
+
+Klasse und Objekt: check
+
+Konstruktoren:     
+
+  BankAccout:  Standard-Konstruktor:  Null Euros
+
+  BankAccout:  Mit 50 Euros Startguthaben.  // ein zweiter Konstruktor //chaining
+
+
+Zugriffsklassen: check
+
+getter- und setter-Methoden: check
+
+Kontostand:  Getter:   getBalance
+
+
+Methoden:
+
+BankAccount myAccount(50);
+myAccount.deposit(50);
+myAccount.withdraw(25);
+myAccount.print();
+
+Logo : Wenn "nix" auf dem Konto ist (withdraw),
+dann geht das nicht.
+
+void deposit (int euros);
+oder
+void deposit (double euros);  // ganze Euros und Cents  // 123.45
+
+
+bool withdraw (double amount);   // ganze Euros und Cents  // 123.45
+
+
+bool withdraw (int euros);
+
+bool withdraw (double amount);   // ganze Euros und Cents  // 123.45
+
+
+equals: Sind zwei Konten gleich -- bzgl. Kontostand !!!!!!!!!!!!
+
+VORSICHT: Das bezieht sich auf den Kontostand !!!!!!!!!!!!
+
+
+Problem: Jedes Konto sollte eine eindeutige Kontonummer haben.
+
+Einfache Lösung:
+
+Globale Variable:
+
+int nextAccountNumber = 10000;
+
+Wünschenswert:
+

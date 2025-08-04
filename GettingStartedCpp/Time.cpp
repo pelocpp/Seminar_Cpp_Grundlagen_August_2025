@@ -62,7 +62,7 @@ void Time::increment()
     // To be done
 }
 
-int Time::getHours()
+int Time::getHours() const
 {
     return m_hours;
 }
@@ -83,7 +83,7 @@ void Time::setHours(int hours)
 }
 
 
-int  Time::getMinutes()
+int  Time::getMinutes() const
 {
     return m_minutes;
 }
@@ -101,7 +101,7 @@ void Time::setMinutes(int minutes)
     }
 }
 
-int  Time::getSeconds()
+int  Time::getSeconds() const
 {
     return m_seconds;
 }
@@ -119,3 +119,26 @@ void Time::setSeconds(int seconds)
     }
 }
 
+bool Time::compare(const Time& other) const
+{
+    // other.m_hours++;   // rechte Seite
+    // this->m_hours++;   // linke Seite
+
+    if (m_hours != other.m_hours) {    // go for this line
+        return false;
+    }
+
+    //if (m_hours != other.getHours()) { // würde auch gehen
+    //    return false;
+    //}
+
+    if (m_minutes != other.m_minutes) {
+        return false;
+    }
+
+    if (m_seconds != other.m_seconds) {
+        return false;
+    }
+
+    return true;
+}

@@ -12,6 +12,9 @@ public:
     Time(int hours, int minutes, int seconds);
     Time(int hours, int minutes);     // Sekunden auf Null
 
+    // Büchse der Pandora
+    // Time(int minutes, short seconds);  // Stunden auf Null
+
     // Time(int hours);   // denkbar !!!: Minuten und Sekunden auf Null
 
     // Conversion Constructor
@@ -19,11 +22,11 @@ public:
 
 public:
     // getter / setter
-    int  getHours();                  // lesender Zugriff
+    int  getHours() const;            // lesender Zugriff
     void setHours(int hours);         // schreibender Zugriff
-    int  getMinutes();                // lesender Zugriff
+    int  getMinutes() const;          // lesender Zugriff
     void setMinutes(int minutes);     // schreibender Zugriff
-    int  getSeconds();                // lesender Zugriff
+    int  getSeconds() const;          // lesender Zugriff
     void setSeconds(int seconds);     // schreibender Zugriff
 
 public:
@@ -33,4 +36,6 @@ public:
     void reset();
     void increment();
     void print();
+
+    bool compare(const Time& other) const;
 };

@@ -127,7 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HelloWorld.cpp" />
+    <ClCompile Include="Pointer_and_References.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Program_Time.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
