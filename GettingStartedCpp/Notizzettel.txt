@@ -1,0 +1,308 @@
+C++ Grundlagen
+
+Peter Loos
+
+================
+
+12.30: 
+
+Kaffeepause
+
+17.00 
+
+Übungen:   Nachmittagsstunden ....
+
+================
+
+ToDo:
+
+Warum m_ im Namen ???  Um this nicht zu verwenden.
+Es ginge aber auch mit this.
+
+================
+
+
+Background:
+
+C/C++ ... Java ... C# ...JavaScript ... 
+
+Python wenig (zeitlich)
+
+Back to the Roots: C/C++ (Nachfrage)
+
+================
+
+Erwartungen
+
+== C++ kennen und anwenden 
+== C++ Programme schreiben können
+== C++ vertiefen
+== C++ Programme lesen können
+== .......................
+
+== Tiefer in das OOP
+== Architektur
+== Embedded-Bereich
+== Speicherverwaltung
+
+== C++ 11 / 17 and beyond: Da kann ich gerne am Ende
+               einen 2-4 stündigen Überblick geben.
+
+
+== Classic C++ :  Vom ersten Tag an ... BIS C++ 11
+
+   Fundament in C++
+
+== Modern C++:    C++ 11 bis heute (C++ 23 / 26)
+
+================
+
+Online-Seminar:
+
+a) Tool: Visual Studio
+
+b) Unterlagen:  Github:  
+
+https://github.com/pelocpp
+
+Classic C++:
+
+https://github.com/pelocpp/cpp_introduction
+
+================
+
+Hinweis:
+
+C ist in C++ enthalten (99%)
+
+C-Kenntnisse sind vorhanden (for, if, ...)
+
+================
+
+Jederzeit / Zwischendrin: 
+
+Fazit // langsamer // schneller // Passd scho
+
+
+================
+
+VS Code: 
+
+Installation von Gcc // MinGW (GCC) etc. // Extensions selber machen.
+
+
+================
+
+Namensraum:  
+
+std::cout
+
+Ich will ein Objekt cout benennen:
+
+================
+
+Übersetzung eines C/C++ Programms:
+
+C++:  Übersetzungseinheit: Eine C++ - Datei (keine Header-Datei)
+
+== Präprozessor (Tool, um #-Direktiven aufzulösen)
+
+== C/C++-Compiler
+
+   Quell-Datei ==> o.-Datei (Linux) // obj.-Datei (Windows)
+
+   COFF (Common Object File Format) is a file format
+   primarily used for object code, executables,
+   and shared libraries,
+   especially in Unix-like systems and Windows.
+
+== Linker:
+
+   o.-Datei(en) ===> .exe (Windows) // Linux: Datei OHNE Endung (Maschinencode).
+
+   Nebenbei: Sucht main, um den Einsprungpunkt beschreiben zu können.
+
+== Loader (Betriebssystems):
+
+   Maschinencode-Datei (zB. .exe-File): ==> Ausführung.
+
+
+==========================================
+
+Wozu gibt es eine IDE: Integrated Development Environment:
+
+  Die versteckt diese Schritte vor dem Benutzer.
+
+==========================================
+
+Was ist eine Klasse und ein Objekt?
+
+Klasse:  Auto
+
+   == Beschreibung:
+
+      -- Daten (statischen Charakter)
+         >>> Farbe, PS
+         >>> aktuelle Position
+
+      -- Funktionen (Methoden): dynamischen Charakter
+           ein oder mehrere Daten der Klasse können sich ändern.
+
+         >>> fahren (aktuelle Position ändert sich)
+         >>> umspritzen (Farbe ändert sich)
+         >>> anzahlKM: Liefert die Anzahl der gef. Kilometer zurück
+
+Objekt:  meinAudi
+
+   Ist ein konkreter Datensatz zu der Klasse.
+
+   Ist eine Ausprägung der Klasse 
+
+Objekt == Instanz.
+
+==========================================
+
+Umsetzung von Klasse und Objekt in C++:
+
+2 / 3 Dateien
+
+Uhrzeit:
+
+int hours;
+int minutes;
+int seconds;
+
+int hours1;
+int minutes1;
+int seconds1;
+
+No !!!!
+
+a) Beschreibung der Klasse: 
+
+   Beschreibungsdatei:  Header-Datei (.h)
+
+b) Implementierung der Methoden der Klasse: 
+
+   Implementierungsdatei: .cpp
+
+c) Anwendung
+
+===================================
+
+Eine Säule der OO: 
+
+Robustheit // Korrektheit der Daten eines Objekts:
+
+Beispiel:
+
+C/C++: globale Variabe:
+
+int n;  // global
+
+Von überall kann JEDER Wert in n geschrieben werden !!!
+
+OO: 
+
+Daten kann man INNERHALB eines Objekts kapseln // verstecken:
+
+Die Daten eines Objekts sind von AUSSEN nicht erreichbar.
+
+Folge: Wenn die Methoden / die Klasse selbst korrekt implementiert ist,
+dann sind die Daten eines Objekts immer korrekt.
+
+Zugriffsschutz:
+---------------
+
+a) public // private:
+
+b) Um Variablen ändern / schreiben zu können:
+
+   Spezielle Methoden: getter / setter
+
+
+
+Frage: protected:  Gibt es (nur) im Umfeld der Vererbung.
+
+=========================================================
+
+    Time now;
+    now.setHours(10);
+   // now.setMinutes(32);
+    now.setSeconds(30);
+
+Ginge / Geht : Ist schlecht.
+
+Was ist schlecht.
+
+Kann einen setter vergessen ?!?!
+Dann ist das Objekt unvollständig initialisiert!!!
+
+===> Abhilfe:
+
+OO: Ein Objekt hat zu JEDEM ZEITPUNKT gültige Werte !!!
+
+a) setter.
+
+b) Konstruktoren: Spezielle Methoden, mit denen die Instanzvariablen
+   eines Objekts vorbelegt werden.
+
+   Zum Zeitpunkt des Anlegens eines Objekts aufgerufen.
+  
+  Vermeiden:
+
+    Time now;
+    now.setHours(10);
+   // now.setMinutes(32);
+    now.setSeconds(30);
+
+Besser:
+
+    Time now(10, 32, 30);  
+
+    2 Dinge:
+
+    i) Ein Objekt mit dem Namen now wird vereinbart.
+    ii) Es wird ein Konstruktor aufgerufen.
+
+
+a) Feature: Constructor Chaining - ab C++ 11
+
+b) Feature: Member Initializer List - Classic C++
+
+Wozu: Zwingend notwendig bei Vererbung.
+
+Kann aber auch OHNE Vererbung eingesetzt werden.
+
+c) Feature: Konvertierungskonstruktor:
+
+   Was ist das: Gewöhnlicher Konstruktor.
+
+   Aber: Mit nur einem Parameter.
+
+Beispiel:
+
+    Time(int seconds);    //zB 10.000 Sekunden ==> Stunden, Minuten und Sekunden
+
+Worin besteht hier  die "Konvertierung":
+
+int ===> Time
+
+=========================================================
+
+Magischen Keys:
+
+F9:  Haltepunkt
+
+F5:  Go bis zum nächsten Haltepunkt
+
+F11:  Gehe in ein Unterprogramm REIN
+
+F12:  Springe über das Unterprogramm hinweg.
+
+Debugger // Debug-Mode:
+
+Nicht initialisierte Variablen werden (am Stack) 
+mit 0xCCCC vorbelegt.
+
+=====================================================
