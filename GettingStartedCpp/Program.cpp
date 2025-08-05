@@ -5,6 +5,7 @@ extern void dynamic();
 extern void test_zeichenketten();
 extern void testParamPassing();
 extern void test_rule_of_three();
+extern void main_Exceptions();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -17,7 +18,7 @@ static void test_static()
 
 int main()
 {
-    test_rule_of_three();
+    main_Exceptions();
 
     return 0;
 }

@@ -769,14 +769,42 @@ Wertzuweisung von Objekten:  GEHT.
 
 Wie:  Es werden alle Werte 1:1 umkopiert.
 
-Maschinenenraum von C++
------------------------
+Maschinenenraum von C++:
+------------------------
 
 A) Destruktor
 
 B) Wertzuweisung
 
+Im Falle des Vorhandenseins von dyn. Daten
+ist der Wertzuweisungs-Operator EXPLIZIT zu implementieren.
+
+C) Kopie eines Objekts:
+
+Im Falle des Vorhandenseins von dyn. Daten
+ist zum Erstellen einer Kopie eines Objekts
+der sog. Kopier-Destruktor EXPLIZIT zu implementieren.
 
 
+Wann müssen wir die "Rule-of_Three" anwenden / umsetzen / realisieren ???
 
+Wenn in den Objekten Variablen / Zeigervariablen vorhanden sind,
+die mittels new / delete zusammen arbeiten.
+
+===============================================================
+
+Modern C++:   Smart Pointer Klassen
+
+std::unique_ptr
+std::shared_ptr
+
+Die arbeiten "anders"
+
+===============================================================
+
+Regel in der Reihenfolge der catch-Blocke:
+
+Vom Speziellen zum Allgemeinen:
+
+EXAKT: Vererbung // Basisklasse // Abgl. Klasse 
 
