@@ -133,8 +133,11 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Topic_02_New_Delete.cpp" />
     <ClCompile Include="Topic_03_Zeichen_Zeichenketten.cpp" />
+    <ClCompile Include="Topic_04_Parameter_Passing.cpp" />
+    <ClCompile Include="Topic_05_Rule_of_Three.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
+    <ClCompile Include="Uebung_02_Zeichenketten.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />

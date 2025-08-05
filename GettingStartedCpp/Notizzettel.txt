@@ -734,4 +734,49 @@ bool dateToWord (std::string date, std::string& result);
 GINGE: Ist nicht performant, weil im ersten
 Parameter eine überflüssige Kopie an 'dateToWord' übergeben wird.
 
+===============================================================
+
+Parameterübergabemechanismus Call-by-Value.
+
+==> Funktion arbeitet mit einer Kopie:
+
+    Das Original wird geschützt.
+
+
+===============================================================
+
+Recap:
+
+Klassen und Objeke
+
+Klasse Time
+Klasse BankAccount
+
+===> Eigenschaft: Es gab keine dynamischen Daten in den Objekten dieser Klassen.
+
+Weiteres Beispiel:
+
+Klasse BigData:
+
+Ziel:
+
+Kann ein Feld von Daten einer beliebigen Länge 
+verwalten / aufnehmen .. und Operationen darauf bereitstellen.
+
+Dynamische Daten UND OO
+
+Wertzuweisung von Objekten:  GEHT.
+
+Wie:  Es werden alle Werte 1:1 umkopiert.
+
+Maschinenenraum von C++
+-----------------------
+
+A) Destruktor
+
+B) Wertzuweisung
+
+
+
+
 
