@@ -1,7 +1,7 @@
 #include "Time.h"
 
-// globale Variable / weil auﬂerhalb von Methoden / Funktionen
-int nextAccountNumber = 10000;
+// globale Variable / weil auﬂerhalb von Methoden / Funktionen // obersten Ebene // Top-level
+long nextAccountNumber = 10000;
 
 void test_time_objects()
 {

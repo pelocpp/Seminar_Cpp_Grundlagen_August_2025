@@ -41,8 +41,10 @@ void BankAccount::setInterestRate(double rate)
 }
 
 // public interface
-void BankAccount::deposit(double amount)
+void BankAccount::deposit(const double& amount)
 {
+    // amount += 1;
+
     m_balance += amount;
 }
 

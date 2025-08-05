@@ -110,4 +110,36 @@ void test_pointer_references_04()
     else {
         std::cout << "ungleich" << std::endl;
     }
+
+    // Beobachtung // Wunsch // Schreibweise
+    // Test auf Gleichheit
+    int n = 1;
+    int m = 1;
+
+    if (n == m) {
+    }
+
+    if (now == than) {    // Geünschte Syntax: Infix-Notation mit Operatorenschreibweise
+        std::cout << "gleich" << std::endl;
+    }
+    else {
+        std::cout << "ungleich" << std::endl;
+    }
+
+    // Gimmick // Spielerei // Macht man im echten Leben nicht :)
+    if (now.operator== (than) ) {    // Syntax: Methodenschreibweise
+        std::cout << "gleich" << std::endl;
+    }
+    else {
+        std::cout << "ungleich" << std::endl;
+    }
+
+    // Zweite Überladung des operator== 
+    // Nebenrechnung: 14, 46, 0
+    if (now == 14 * 3600 + 46 * 60 ) {  
+        std::cout << "gleich" << std::endl;
+    }
+    else {
+        std::cout << "ungleich" << std::endl;
+    }
 }

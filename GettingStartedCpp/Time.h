@@ -12,6 +12,9 @@ public:
     Time(int hours, int minutes, int seconds);
     Time(int hours, int minutes);     // Sekunden auf Null
 
+    // Destruktor
+    ~Time();
+
     // Büchse der Pandora
     // Time(int minutes, short seconds);  // Stunden auf Null
 
@@ -38,4 +41,10 @@ public:
     void print();
 
     bool compare(const Time& other) const;
+
+public:
+    // operators
+    bool operator== (const Time& other) const;
+
+    bool operator== (int seconds) const;  // 3:20:30 mit 1000 Sekunden
 };

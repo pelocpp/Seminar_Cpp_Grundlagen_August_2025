@@ -15,9 +15,17 @@ Kaffeepause
 ================
 
 ToDo:
+=====
 
-Warum m_ im Namen ???  Um this nicht zu verwenden.
-Es ginge aber auch mit this.
+Überladen von Operatoren
+
+Dynamische Speicherverwaltung
+
+Rule-of-Three
+
+Parameter-Übergabe (Technik)
+
+Speicherbereiche
 
 ================
 
@@ -519,7 +527,184 @@ C) Für globale Variablen -- die aber nur in Klassen
 
 
 
+===============================================================
+
+Überladen von Operatoren
+------------------------
+
+Wie geht das ???
+
+Wie Methoden:
+
+   == Man schreibt eine entsprechende Methode: 
+
+   == Welchen Namen hat diese Methode: 'operator =='
 
 
+
+Beobachtung:
+
+0x CCCCCCC ==> Stack: nicht initialisiert
+
+0x DDDDDDD ==> Heap: nicht mehr verfügbar, weil freigegeben
+
+0x CDCDCDC ==> Heap: nicht initialisiert.
+
+===========================================================
+
+Beobachtung:
+
+new / delete:
+
+new: "Wird aufgerufen" :)
+
+delete: Hmmm, das ist das eigentliche Problem: Wann, wo, wer ???????????????
+
+===========================================================
+
+new / delete:
+
+Gibt es in ZWEI Varianten:
+
+a) Für einzelne Werte
+b) Für ein Feld von Werten.
+
+Array: []
+
+===========================================================
+
+Die Adresse zeigt auf ein Feld von int-Variablen
+
+Frage:  Adresse 160  plus 1  ==> 164
+
+Es gibt bei Zeiger ZWEI SChreibweisen:
+  
+  ip[i] = i;
+  
+  IST IDENTISCH ZU
+  
+  *(ip + i)
+
+Konzept von Zeigern / Adressen in C
+
+Mit Maschinencode:
+
+        *(ip + i) = i;
+00007FF6CB0048CF  movsxd      rax,dword ptr [rbp+24h]  
+00007FF6CB0048D3  mov         rcx,qword ptr [ip]  
+00007FF6CB0048D7  mov         edx,dword ptr [rbp+24h]  
+00007FF6CB0048DA  mov         dword ptr [rcx+rax*4],edx  
+
+        ip[i] = i;
+00007FF6CB0048F6  movsxd      rax,dword ptr [rbp+44h]  
+00007FF6CB0048FA  mov         rcx,qword ptr [ip]  
+00007FF6CB0048FE  mov         edx,dword ptr [rbp+44h]  
+00007FF6CB004901  mov         dword ptr [rcx+rax*4],edx  
+
+Auch bei mehr-dim. Feldern sieht die Umsetzung in Maschinencode
+identisch aus.
+
+Warum?
+
+== Es gibt keine mehr-dim. Feldern in C/C++
+
+numbers[5][10]; liegt im Speicher KONSEKUTIV:
+
+Ironische Bemerkung:
+--------------------
+
+int numbers[10]; 
+
+Ironische Bemerkung: "Es gibt keine Felder in C/C++"
+
+==> Dennis Ritchie:
+
+Ist numbers eine Anfangsadresse: Die Adresse des ersten Elements:
+
+    for (int i = 0; i < 10; ++i) {
+        *(numbers + i) = i;
+    }
+
+Zweite Idee: Vereinfachung der Schreibweise:
+
+    for (int i = 0; i < 10; ++i) {
+        numbers[i] = i;
+    }
+
+Bei Objekten:
+
+        (*(tp + i)).setHours(i);
+00007FF75B6A9F45  movsxd      rax,dword ptr [rbp+24h]  
+00007FF75B6A9F49  imul        rax,rax,0Ch    // 0Ch = 12 
+00007FF75B6A9F4D  mov         rcx,qword ptr [tp]  
+00007FF75B6A9F51  add         rcx,rax  
+00007FF75B6A9F54  mov         rax,rcx  
+00007FF75B6A9F57  mov         edx,dword ptr [rbp+24h]  
+00007FF75B6A9F5A  mov         rcx,rax  
+00007FF75B6A9F5D  call        Time::setHours (07FF75B6A1352h)  
+
+Maschinencode:
+
+Es schadet nicht, da mal hinzusehen :)
+
+=======================================================
+
+Zeichen und Zeichenketten
+
+==> STL  // Klasse std::string
+
+=============================================
+
+size_t
+
+versus
+
+int:
+
+Hmmm, int ist vom ersten Tag der Typ für ganze Zahlen.
+
+Puristen: Es gibt immer wieder Situationen, wo es keine negativen Zahlen gibt:
+
+size_t ist der Typ für ganze, POSITIVE Zahlen.
+
+==============================================
+
+Wie sieht in Objekt std::string s ("12345") intern aus ????
+
+==============================================
+
+Frage:
+
+Wie bekomme ich aus einer Funktion / Methode
+ein oder mehrere Ergebnisse zurück ????
+
+i) Ein: Über den Rückgabewert.
+
+ii) ODER:
+
+    bool success = obj.tueWas (obj2, result);
+
+    tueWas (const X& first, X& second);
+
+    Der zweite Parameter ist für das Ergebis gedacht.
+
+iii) Mehrere:
+
+   Die Funktion liefert eine Struktur / ein Objekt zurück.
+
+   ==> Leicht strukturierteren Geschmack
+
+iv) Mehrere:
+
+   Die Funktion hat mehrere NICHT-const Parameter,
+   in die das Ergebnis reingeschrieben werden.
+
+
+
+=============================================================
+
+Aufgabe
+
+https://github.com/pelocpp/cpp_introduction/blob/master/Cpp_Introduction/Exercises/Exercises_Strings.md
 
 

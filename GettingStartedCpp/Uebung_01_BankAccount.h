@@ -27,7 +27,7 @@ public:
     double getInterestRate() const;
 
     // public interface
-    void deposit(double amount);
+    void deposit(const double& amount);
     void withdraw(double amount);
     bool equals(BankAccount other);
     void print();

@@ -4,9 +4,20 @@
 
 Time::Time()
 {
+    std::cout << "Def. c'tor Time" << std::endl;
+
     m_hours = 0;
     m_minutes = 0;
     m_seconds = 0;
+}
+
+// Destruktor
+Time::~Time()
+{
+    std::cout << "Destruktor" << std::endl;
+
+    // Was ist zu tun ???
+    // Ehrliche Anwort: Bei dieser Klasse nichts.
 }
 
 // passt
@@ -25,6 +36,8 @@ Time::Time()
 Time::Time(int hours, int minutes, int seconds) 
     : m_hours (0), m_minutes(0), m_seconds(0)
 {
+    std::cout << "User-defined c'tor Time" << std::endl;
+
     setHours(hours);
     setMinutes(minutes);
     setSeconds(seconds);
@@ -141,4 +154,38 @@ bool Time::compare(const Time& other) const
     }
 
     return true;
+}
+
+
+// operators
+bool Time::operator == (const Time& other) const
+{
+    if (m_hours != other.m_hours) {
+        return false;
+    }
+
+    if (m_minutes != other.m_minutes) {
+        return false;
+    }
+
+    if (m_seconds != other.m_seconds) {
+        return false;
+    }
+
+    return true;
+}
+
+bool Time::operator == (int seconds) const
+{
+    // a) seconds => h:m:s umwandeln
+    // b) Aktuelle Uhrzeit nach Sekunden umwandeln (einfacher)
+
+    int leftOperand = m_hours * 3600 + m_minutes * 60 + m_seconds;
+
+    if (leftOperand == seconds) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
