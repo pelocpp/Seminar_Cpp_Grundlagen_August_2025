@@ -131,9 +131,12 @@
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Program_Time.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Uebung_01_BankAccount.cpp" />
+    <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Uebung_01_BankAccount.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
