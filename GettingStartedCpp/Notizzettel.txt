@@ -707,4 +707,31 @@ Aufgabe
 
 https://github.com/pelocpp/cpp_introduction/blob/master/Cpp_Introduction/Exercises/Exercises_Strings.md
 
+Hinweis:
+
+std::string dateToWord(const std::string& date);
+
+Das ist die Vorgabe.
+
+ALTERNATIVE:
+
+void dateToWord2(const std::string& date, std::string& result);
+
+Es klappt etwas nicht:
+
+result = "";  // Ginge
+
+ODER:
+
+bool dateToWord2(const std::string& date, std::string& result);
+
+true / false:
+
+HINWEIS:
+
+bool dateToWord (std::string date, std::string& result);
+
+GINGE: Ist nicht performant, weil im ersten
+Parameter eine überflüssige Kopie an 'dateToWord' übergeben wird.
+
 
