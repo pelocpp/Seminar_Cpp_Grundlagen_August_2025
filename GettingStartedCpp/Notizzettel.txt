@@ -1077,8 +1077,144 @@ C)
 
   Bitte: Keine Methode hat mehr als 3 Zeilen  ... keep it simple.
 
+=======================================================================
 
-  13:30
-  =====
+STL:  Bibliothek
 
-  Bis maximal 14 Uhr.
+C++:  Bjarne Stroustrup
+
+      "C with Classes"
+
+
+Generischen Programmierung:  (( Templates ))
+
+      Alexander Stepanov
+
+Stroustrup & Stepanov:  ===> Bibliothek für C++
+
+==> STL:  Standard TEMPLATE Library
+
+=======================================================================
+
+Bild:
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/TemplateClassBasics/TemplatesClassBasics.md
+
+=======================================================================
+
+STL:
+
+== Container
+== Iterators
+== Algorithmus
+
+"Speziell"
+
+==> Generischen Charakters
+==> Templates
+==> Konzepte, die es so nur in der STL gibt (Bereichs)
+
+==> Warum verwenden wir sie:  Performanz.
+
+Einstieg:  
+
+Felder // Arrays:  => variablen Länge: std::vector
+
+Zu Beginn: 0
+
+push_back: Ans Ende anfügt.
+
+
+9, 13, 19, 28, 42
+
+neuerWert = alterWert * 1.5;
+
+80 * 1.5 = 120;
+
+========================================================
+
+Die STL hat viele Design-Vorgaben / Entscheidungen:
+
+== Man soll einen Container "nahtlos" austauschen können.
+
+Hinweis:
+
+Der Index-operator "numbers[i]" ist nur bei Containern vorhanden // möglich,
+deren Daten im Speicher dicht aneinander liegen // konsekutiv.
+
+Also wie in einem C-Style Array.
+
+Dies ist zB bei std::list NICHT der Fall.
+
+Abhilfe:
+
+Ein anderes Konzept für den Zugriff auf einzelne Elemente.
+
+Iteratoren-Konzept:
+------------------
+
+Was ist ein Iterator:
+
+Eine Position in einem Container.
+
+Was kann man mit einer Position machen?
+
+3 Operationen:   // next, current, getValue
+
+operator* : Wert hinter der Position   // wie dereferenzieren // indirekter Zugriff:
+
+    Achtung: Position muss GÜLTIG sein.
+
+operator++:  Gehe zur nächsten Position
+
+operator==
+operator!=:  Vergleich zweier Positionen
+
+Wie komme ist an eine Position an einem Container ???
+
+Container:  
+
+begin():  Position des ersten Elements
+end():    Position des letzten Elements // Exakt: Die Position NACH dem Ende // Nirwana
+
+Hinweis:
+
+using ist ähnlich zu typedef
+
+
+// ================================================================
+
+
+Teuflische Folge:
+
+Startwert: Vorgegeben
+
+int start = 7;
+
+Nächster Wert:
+
+a) Wenn aktueller Wert gerade:  wert => wert / 2;
+
+b) Wenn aktueller Wert ungerade: wert =>  3 * wert + 1;
+
+Beispiel:
+
+7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1 // , 4, 2, 1
+
+1: Abbruch // Ende.
+
+Beweis:
+
+Warum ist für JEDEN Startwert diese Folge ENDLICH.
+
+In einem STL-Container sind die Werte abzulegen.
+
+Danach sind die Resultate (Wert) des Containers auszugeben.
+
+
+Sinn und Zweck:
+
+STL - Container
+
+STL - Iteratoren
+

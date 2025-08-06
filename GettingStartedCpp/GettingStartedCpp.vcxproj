@@ -137,13 +137,17 @@
     <ClCompile Include="Topic_05_Rule_of_Three.cpp" />
     <ClCompile Include="Topic_06_Ausnahmen.cpp" />
     <ClCompile Include="Topic_07_Vererbung.cpp" />
+    <ClCompile Include="Topic_08_Schablonen.cpp" />
+    <ClCompile Include="Topic_09_STL.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />
+    <ClCompile Include="Uebung_03_BankAccounts_Vererbung_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />
     <ClInclude Include="Uebung_01_BankAccount.h" />
+    <ClInclude Include="Uebung_03_BankAccounts_Vererbung.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />
