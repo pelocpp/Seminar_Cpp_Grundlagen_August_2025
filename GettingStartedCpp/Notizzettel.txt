@@ -1047,3 +1047,38 @@ Schnittstelle versus abstrakte Basisklasse (unvollständige Hilfsklasse)
 
 https://github.com/pelocpp/cpp_introduction/blob/master/Cpp_Introduction/Exercises/Exercises_MoreBankAccounts.md
 
+A)
+
+// Single-Responsibility
+// eine Schnittstelle, die die Betrachtung eines Bankkontos beschreibt.
+struct IAccount
+{
+  // ...
+};
+
+B)
+
+Klasse Account – Teilweise Realisierung der Methoden der Schnittstelle IAccount
+
+C)
+
+2 konkrete Klassen:
+
+= Giro-Konto:  // CurrentAccount
+  Hat einen Überziehungslimit // Kreditrahmen.
+
+  Man kann ins Negative bis zu einem Limit (m_limit) abheben.
+
+= Studentenkonto // Schülerkonto:
+
+  Keine Überziehung möglich. // Bis auf 0 kann abgehoben werden.
+
+  ===> Vererbung // virtual // interface // Abstrakte Basisklasse.
+
+  Bitte: Keine Methode hat mehr als 3 Zeilen  ... keep it simple.
+
+
+  13:30
+  =====
+
+  Bis maximal 14 Uhr.
