@@ -6,6 +6,7 @@ extern void test_zeichenketten();
 extern void testParamPassing();
 extern void test_rule_of_three();
 extern void main_Exceptions();
+extern void main_vererbung();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -18,7 +19,7 @@ static void test_static()
 
 int main()
 {
-    main_Exceptions();
+    main_vererbung();
 
     return 0;
 }

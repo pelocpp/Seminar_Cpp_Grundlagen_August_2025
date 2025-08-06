@@ -17,15 +17,18 @@ Kaffeepause
 ToDo:
 =====
 
-Überladen von Operatoren
+== Vererbung
 
-Dynamische Speicherverwaltung
+== Templates
 
-Rule-of-Three
+== STL // Container // Iteratoren ... Wichtig 
 
-Parameter-Übergabe (Technik)
 
-Speicherbereiche
+
+
+
+
+
 
 ================
 
@@ -807,4 +810,240 @@ Regel in der Reihenfolge der catch-Blocke:
 Vom Speziellen zum Allgemeinen:
 
 EXAKT: Vererbung // Basisklasse // Abgl. Klasse 
+
+===============================================================
+
+Vererbung:
+----------
+
+Konzept der OO
+
+// Funktionalen Programmierung
+
+Wann setzen wir Vererbung ein ?????????????
+
+Hintergrund:   // Anschaulich
+
+Fragen:
+
+== Klasse Rechteck // Rectangle
+
+== Klasse FarbigesRechteck // ColoredRectangle
+
+Satz: FarbigesRechteck ist eine spezielle Version eines Rechtecks.
+
+==>  "Ein FarbigesRechteck ist ein Rechteck"
+
+Beziehungen // Design von Klassen und Software // Relationship:
+
+Beziehung:   "ist-ein" // is-a 
+
+ "ist-ein" Beziehung: Vorausetzung wenn ich Vererbung einsetzen möchte.
+
+ == Klasse Linie // class Line
+
+ == Klasse Punkt // class Point
+
+ Satz: Ein Punkt ist keine Linie
+
+       Eine Linie ist ein Punkt ??? No
+
+       Eine Linie besteht aus vielen Punkten
+
+       Eine Linie besteht aus zwei Punkten (Anfang / Ende)
+
+       Eine Linie hat zwei verschiedene Punkte (Anfang / Ende)
+
+"hat-ein" Beziehung // Plural auch möglich (Nicht: unendlich)
+
+"has-a" Relationship:
+
+a) Hier kann VERERBUNG NICHT angewendet werden.
+
+b) 
+
+class Line
+{
+private:
+    Point m_begin;
+    Point m_end;
+
+    Color m_color;  // ???
+
+    int   m_index; // geht datentechnisch // lokale Variable einer Methode // NEIN
+}
+
+"hat-ein" Beziehung  ===> Instanzvariablen (Member) // Eigenschaften einer Klasse 
+
+100.000 Linien: Speicherplatz
+
+///////////////////////////////////////////////////////////////
+
+Habe eine Klasse Rechteck.
+
+Benötige eine Klasse FarbigesRechteck.
+
+Alles "öffentliche" (public) wird an die Kindklasse vererbt.
+
+AUSNAHME: Keine Konstruktoren !!!
+
+Wording:
+=======
+
+Basisklasse (base class) / abgeleitete Klasse (derived class)
+
+Parent Class / Child Class (Kindklasse)
+
+// ==========================================================
+
+Anschauliche Betrachtung
+========================
+
+Was bedeutet Vererbung?
+
+"Ich erbe alles von der Vaterklasse (Oma)" :)
+
+Nope - es gibt hier DREI Optionen:
+
+A) Es wird eine Methode "geerbt".  Passt (gibt nichts zu erweitern) // Häufig
+
+B) Eine Methode wird ersetzt / ausgetauscht / ausgewechselt. ??!?!?!?!
+
+   Hmmmm: Steht im Widerspruch zur is-a Beziehung.
+
+   Vorsicht: "Smell"  // Geruch // "Code smells" // ist das wirklich so gewollt.
+
+C) Eine Methode wird erweitert / verfeinert. Passt // Häufig
+
+===========================================================
+
+Grundlagen der Vererbung.
+
+Besondere Features der Vererbung.
+
+A) Virtuelle Methodenaufrufmechanismus.
+-----------------------------------
+
+B) Polymorphismus
+-----------------------------------
+
+Aufruf einer Methode an einer Basisklasse,
+der zu einem tatsächlichen Aufruf einer Methode einer Kindklasse führt.
+
+Exakter:
+Aufruf einer Methode (an einem Zeiger) auf eine Basisklasse,
+der zu einem tatsächlichen Aufruf einer Methode einer Kindklasse führt.
+
+
+figures[i]->draw();
+
+Wie nennt man das: 
+i) Mehrere Methoden kommen in Frage: Poly
+ii) Gestalt: Morphus
+
+
+
+// Objekte dynamisch vorliegen // Mit Adressen arbeiten
+
+Unterscheidung:
+--------------
+
+Compile-Time // Übersetzungszeit
+
+Runtime      // Laufzeit
+
+Will ich eine Unterscheidung zur Laufzeit: virtual
+
+Einmal virtual // immer virtual
+
+Tipp: In den Kindklassen: Keyword override verwenden.  // C++ 11 
+
+===========================================
+
+final:
+
+===========================================
+
+2 Begriffe:
+
+== Abstrakte Klasse
+
+== Interface // Schnittstelle
+
+===========================================
+
+Was ist ein "Interface" // "Schnittstelle" im Sinne der OO ???
+--------------------------------------------------------------
+
+Ist auch ein Entwurfsmittel.
+
+a) Ein Vertrag // Kontrakt.
+
+   Dieser beschreibt ein oder mehrere Methoden (Name, Parameter der Methode),
+   sie haben KEINE Implementierung.
+
+b) Klassen können eine Vertrag erfüllen:
+
+   Es sind dann alle Methoden des Vertrags (der Schnittstelle) zu implementieren.
+
+
+Hinweis: Hier wird nichts "vererbt":
+
+Man kann es so sagen: Es werden die Anforderungen eines Vertrags vererbt.
+
+Sprachliches Konstrukt: C#, Java, ...: Keyword interface
+
+Nicht direkt in C++: Kein keyword 'interface'
+
+Umsetzung in C++:
+
+struct IRectangle
+{
+    virtual void draw() = 0;
+};
+
+Was bedeutet "= 0";  
+
+Anschauliche Betrachtung ????
+Methoden eine Klasse haben eine Adresse.
+Methoden einer Schnittstelle haben KEINE Adresse.
+
+===========================================
+
+Was ist eine abstrakte Klasse im Sinne der OO ???
+-------------------------------------------------
+
+i) Eine unvollständige Klasse 
+
+ii) Eine unvollständige Klasse hat in der Regel:
+
+a) Instanzvariablen // solche, die für ALLE Kindklassen relevant sind !!!
+
+b) Implementiert Methoden // solche, die für ALLE Kindklassen relevant sind !!!
+
+   (( Kann virtual oder nicht-virtual sein ))
+
+c) Besitzt ein oder mehrere Methoden OHNE Realisierung:
+ 
+   Diese MÜSSEN von ALLEN Kindklassen realisiert werden ....
+   UND es ist nicht möglich, eine wie auch immer geartete Realisierung
+   in der aktuellen Klasse vorzunehmen.
+
+   ==> Hat Charakter einer Schnittstelle / Interface
+
+d) Von einer abstrakten Klasse kann man KEIN Objekt erzeugen.
+
+e) Aber: Eine abstrakte Klasse eignet sich hervorragend als Basisklasse,
+   weil sie Teile der Funktionalität (Daten / Methoden) bereitstellt.
+
+====================================================================
+
+Unterschied:
+Schnittstelle versus abstrakte Basisklasse (unvollständige Hilfsklasse)
+
+====================================================================
+
+Übung:
+
+https://github.com/pelocpp/cpp_introduction/blob/master/Cpp_Introduction/Exercises/Exercises_MoreBankAccounts.md
 
