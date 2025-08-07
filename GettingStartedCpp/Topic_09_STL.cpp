@@ -3,6 +3,8 @@
 #include <list>
 #include <deque>
 #include <algorithm>
+#include <numeric>
+
 
 void test_stl_vector_01()
 {
@@ -375,7 +377,76 @@ void test_stl_vector_11()
 
     std::cout << "Done." << std::endl;
 }
+
+bool filter(int elem) {
+    return (elem % 2) == 0;
+}
+
+void test_stl_vector_12()
+{
+    std::vector<int> numbers;
+    numbers.resize(10);
+
+    // vorbelegen mit 1, 2, 3, 4, 5, ...
+    std::iota(
+        numbers.begin(),
+        numbers.end(),
+        1
+    );
+
+    // ausgeben
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        print
+    );
+
+    // Filtern:
+    // Habe eine ersten Vektor
+    // Will alle geraden Zahlen rausfiltern ...
+
+    //// Erste Variante des Aufrufs: 
+    //std::vector<int> target;
+    //target.resize(numbers.size());
+
+    //// Ziel-Container muss alle Ergebnisse aufnehmen können - mit operator=
+    //// (muss also mindestens so groß sein wie der Ursprungscontainer)
+    //std::copy_if(
+    //    numbers.begin(),
+    //    numbers.end(),
+    //    target.begin(),
+    //    filter
+    //);
+
+    // Zweite Variante des Aufrufs: 
+    // Ziel-Container ist zu Beginn leer
+    std::vector<int> target;
+
+    // Ziel-Container muss alle Ergebnisse aufnehmen können:
+    // Diese können mit 'push_back' an das Ende von 'target' angehängt werden
+    // Dazu benötigt man aber einen Adapter
+    std::copy_if(
+        numbers.begin(),
+        numbers.end(),
+        // target.begin(),
+        std::back_inserter (target),
+        filter
+    );
+
+    std::cout << "Result:" << std::endl;
+
+    // ausgeben
+    std::for_each(
+        target.begin(),
+        target.end(),
+        print
+    );
+
+    std::cout << "Done." << std::endl;
+}
+
+
 void test_stl_vector()
 {
-    test_stl_vector_01_A();
+    test_stl_vector_12();
 }

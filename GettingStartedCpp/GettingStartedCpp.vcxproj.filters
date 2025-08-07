@@ -89,6 +89,9 @@
     <ClCompile Include="ScopedTimer.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Topic_11_Zufall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />

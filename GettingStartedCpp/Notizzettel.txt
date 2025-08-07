@@ -1355,5 +1355,47 @@ memcpy
 memmove
 memset
 
-11:05
------
+=======================================================
+
+std::vector
+
+== Container
+== Iterator
+== Algorithmus
+
+=======================================================
+
+Filtern:
+
+a) Geht
+b) Umständlicher 
+
+=======================================================
+
+Lotto spielen ....
+
+Zufallszahlen ...
+
+
+Liefert std::rand eine Zufallszahl zurück ???
+
+Ja, schon, aber diese wird berechnet.
+
+A) Wenn ich mit der Vorbelegung des Zufallszahlengenerators arbeite:
+
+   Immer diesselbe Folge berechnet: Kann ein Vorteil sein.
+
+                         Reproduktion von Abstürzen.
+
+B) 
+
+
+
+
+
+
+
+
+
+
+
