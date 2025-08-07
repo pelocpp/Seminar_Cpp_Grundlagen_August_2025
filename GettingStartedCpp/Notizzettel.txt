@@ -1387,7 +1387,48 @@ A) Wenn ich mit der Vorbelegung des Zufallszahlengenerators arbeite:
 
                          Reproduktion von Abstürzen.
 
-B) 
+B) Mit einem Startwert // Jargon: Samen (seed) arbeiten
+
+==============================================================
+
+Lotto spielen:
+
+Ziel:
+
+Umgang mit der STL:
+-------------------
+
+Umgang mit OO:
+______________
+
+class Lottery
+
+Ziehung der Lottozahlen simulieren.
+
+1. Zahl gezogen ...
+2. Zahl gezogen ...
+
+class Lottery:
+
+Kugeln im Bereich von 1 .. 49
+
+  "has-a":   std::vector mit den gezogenen Kugeln / Zahlen
+
+  Zu Beginn leer:
+
+  Methode: drawNextNumber
+
+  std::vector hat dann ein Element
+
+  Methode: drawNextNumber
+
+  Hürde  // Stolperfalle:
+
+     Hmmm: Die zweite gezogene Zahl (std::rand) darf nicht im vector vorhanden sein !!!!!!
+
+     std::find  // std::find_if 
+
+  print: Ausgabe der bereits gezogenen Kugeln.
 
 
 
