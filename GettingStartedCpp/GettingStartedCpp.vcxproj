@@ -144,6 +144,7 @@
     <ClCompile Include="Topic_09_STL.cpp" />
     <ClCompile Include="Topic_10_STL_Performanz.cpp" />
     <ClCompile Include="Topic_11_Zufall.cpp" />
+    <ClCompile Include="Topic_12_Phonebook_Hashtabelle.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />

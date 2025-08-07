@@ -11,6 +11,7 @@ extern void main_templates();
 extern void test_stl_vector();
 extern void main_stl_performance();
 extern void zufall();
+extern void phone_book();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -23,7 +24,7 @@ static void test_static()
 
 int main()
 {
-    zufall();
+    phone_book();
 
     return 0;
 }

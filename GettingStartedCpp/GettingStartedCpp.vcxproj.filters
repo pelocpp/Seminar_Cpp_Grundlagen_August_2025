@@ -98,6 +98,9 @@
     <ClCompile Include="Uebung_05_Lotto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Topic_12_Phonebook_Hashtabelle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />

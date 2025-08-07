@@ -21,8 +21,7 @@ ToDo:
 B) std::copy_if  // Filtern in der STL
 
 
-
-
+================================================================
 
 ================
 
@@ -1430,13 +1429,125 @@ Kugeln im Bereich von 1 .. 49
 
   print: Ausgabe der bereits gezogenen Kugeln.
 
+=================================================
+
+STL: Container:   std::vector
+
+Container eines anderes Aussehens:
+
+Hash Tabelle:
+-------------
+
+Dictionary
+
+Worum geht's:
+
+Daten:    Struktur:
+
+Ersten Wert:   Name einer Person
+Zweiten Wert:  Telefonnummer
+
+1. Ansatz:  
+
+Klasse Eintrag // Entry // Contact:
+
+class Contact
+{
+    std::string m_name;   // Name
+    size:t      m_phone;  // Nummer
+};
+
+Vektor mit vielen Contact-Einträgen / Contact-Elementen erzeugen.
+
+PROBLEM:
+
+Vektor mit vielen Contact-Einträgen :  1.000 Einträge
+
+Anfrage: Suche nach "Hans Meier" zB der 999 Eintrag.
+
+Neuer Ansatz:
+
+Tabellen:  2 Einträge:  (Schlüssel / Wert) //  (Key / Value)
+
+"Hans Meier": Schlüssel
+12312321:     Wert
+ 
+Tabellen verwalten (Schlüssel / Wert) - Paare.
+
+Hashtabelle:
+
+Idee: Man berechne zu einem Schlüssel einen INDEX.
+
+"Peter Wagner" ===> INDEX  (254)     // Hash-Funktionen
+
+Dieses Index zeigt in eine Tabelle (Vektor):
+
+// Pointer auf das unterlagerte (Schlüssel / Wert) - Paar.
+
+Problem:   Hash - Kollision
+
+Tina Meier   ==> 152
+Hans Mueller ==> 152
+
+Lösung:
+
+// Pointer auf eine LISTE mit unterlagerten (Schlüssel / Wert) - Paaren.
+
+C++ STL:   std::unorderer_map
+
+VORSICHT:  std::map  // Ist was anderes // Binärer Suchbaum.
+
+Ideen:
+
+Wie kann man sich eine Hash-Funktion vorstellen:
+
+"Peter Wagner" ==> Summer aller Ascci Werte: ( 61 + 66 + 89 + ... ) % 255 .
+
+Telefonbuch:
+
+Hash ==> streuen // verstreuen:  Dünger wird verstreut: gleichmäßig.
 
 
+    std::unordered_map<std::string, size_t> m_book; 
 
+Wie sieht ein Eintrag ((Schlüssel / Wert)- Paar) in der Praxis aus?
 
+std::pair:
 
+// ====================================================================
 
+Übung zum Phonebook:
+--------------------
 
+Das haben wir:
 
+class Phonebook
+{
+private:
+    std::unordered_map<std::string, size_t> m_book;   // Hash-Tabelle
 
+public:
+    bool addEntry(const std::string& name, size_t phone);
+    bool searchEntry(const std::string& name);
+    bool getPhonenumber(const std::string& name, size_t& phone);
+};
 
+NEU:
+
+getter:
+
+   int countEntries();  // Wieviele Einträge hat das Phonebook
+
+Methode:
+
+   void print();        // Den Inhalt des Phonebooks ausgeben.
+
+Etwas komplizierter // Online:
+
+Einen Eintrag entfernen:
+
+    bool removeEntry (const std::string& name);
+
+    // true : hat geklappt
+
+    // false: hat nicht geklappt.
