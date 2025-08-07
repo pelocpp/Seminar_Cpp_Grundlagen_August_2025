@@ -149,11 +149,13 @@
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />
     <ClCompile Include="Uebung_03_BankAccounts_Vererbung_Test.cpp" />
     <ClCompile Include="Uebung_04_Teuflische_Folge.cpp" />
+    <ClCompile Include="Uebung_05_Lotto.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />
     <ClInclude Include="Uebung_01_BankAccount.h" />
     <ClInclude Include="Uebung_03_BankAccounts_Vererbung.h" />
+    <ClInclude Include="Uebung_05_Lotto.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.md" />

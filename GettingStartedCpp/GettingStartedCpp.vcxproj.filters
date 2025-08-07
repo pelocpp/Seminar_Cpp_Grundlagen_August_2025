@@ -27,6 +27,9 @@
     <ClInclude Include="Uebung_03_BankAccounts_Vererbung.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Uebung_05_Lotto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HelloWorld.cpp">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Topic_11_Zufall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Uebung_05_Lotto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
