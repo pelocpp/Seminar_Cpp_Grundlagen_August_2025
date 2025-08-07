@@ -9,6 +9,7 @@ extern void main_Exceptions();
 extern void main_vererbung();
 extern void main_templates();
 extern void test_stl_vector();
+extern void main_stl_performance();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -21,7 +22,7 @@ static void test_static()
 
 int main()
 {
-    test_stl_vector();
+    main_stl_performance();
 
     return 0;
 }

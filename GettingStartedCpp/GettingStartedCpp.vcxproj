@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +132,7 @@
     <ClCompile Include="Pointer_and_References.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Program_Time.cpp" />
+    <ClCompile Include="ScopedTimer.h" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Topic_02_New_Delete.cpp" />
     <ClCompile Include="Topic_03_Zeichen_Zeichenketten.cpp" />
@@ -139,10 +142,12 @@
     <ClCompile Include="Topic_07_Vererbung.cpp" />
     <ClCompile Include="Topic_08_Schablonen.cpp" />
     <ClCompile Include="Topic_09_STL.cpp" />
+    <ClCompile Include="Topic_10_STL_Performanz.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />
     <ClCompile Include="Uebung_03_BankAccounts_Vererbung_Test.cpp" />
+    <ClCompile Include="Uebung_04_Teuflische_Folge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Time.h" />

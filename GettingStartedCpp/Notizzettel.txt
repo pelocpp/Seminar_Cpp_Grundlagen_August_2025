@@ -17,14 +17,8 @@ Kaffeepause
 ToDo:
 =====
 
-== Vererbung
 
-== Templates
-
-== STL // Container // Iteratoren ... Wichtig 
-
-
-
+B) std::copy_if  // Filtern in der STL
 
 
 
@@ -1218,3 +1212,148 @@ STL - Container
 
 STL - Iteratoren
 
+STL - Algorithmen
+
+Zum Begriff: 
+
+Unter dem Wort  "STL Algorithmen" versteht man eine Reihe von Funktionen,
+die auf Container arbeiten ... und zunächst einfachere Tätigkeiten vollziehen:
+
+== Container durchlaufen // traversieren
+== füllen
+== suchen
+== Kopieren
+== Daten eines Containers umwandeln ...
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        XXX
+    );
+
+Der dritte Parameter: 
+
+A) Einfachste Umsetzung: Eine C-Funktion
+
+B) Ein aufrufbaren Objekts
+
+C) Lamda-Funktion
+
+
+Hinweis:
+
+Leider:
+
+Die Fehlermeldungen (STL / generischen Programmierung) sind häufig REAGIEREND.
+
+================================================
+
+std::for_each:
+
+a) Lesender Zugriff auf einen Wert: copy-by-value
+
+b) Schreibenden Zugriffs: copy-by-reference
+
+=================================================
+
+Frage:
+
+void fun(const Type &a);
+
+The signature does not need to have const &.
+
+"Besser mit Referenz": Why ???
+
+Antwort:
+
+i)   Elem. Datentyp (int, double, float, ...)
+
+     Go for call-by-value: Ist schneller
+
+     (( Logo: Wenn gelesen wird // Schreiben einer Kopie macht keinen Sinn ))
+
+ii)  Objekte (Klasse / Struktur)
+
+     Bei "größeren" Variablen / Objekten tut das Kopieren weh (Zeit / Performanz):
+
+     Hier call-by-Reference:  
+
+
+Vergleich)
+
+    // Call by Value: void print(int value)
+    int m = value;
+00007FF705B8393F  mov         eax,dword ptr [value]  
+00007FF705B83945  mov         dword ptr [m],eax  
+
+
+
+    // Call by Reference: void print(int& value)
+    int m = value;
+00007FF78FF73FD0  mov         rax,qword ptr [value]  // rax: Adresse-Register
+00007FF78FF73FD7  mov         eax,dword ptr [rax]    // indirekte Lesen : eax ist der Akku / Wert
+00007FF78FF73FD9  mov         dword ptr [m],eax  
+
+
+=======================================================================
+
+Suchen nach einem Wert:   std::find
+
+Hinweis:
+
+warning C4834: discarding return value of function with [[nodiscard]] attribute
+
+discarding: ignorieren, wegschmeißen
+
+=======================================================================
+
+Programmieren mit der STL:
+--------------------------  
+
+Eigene Stilistik:
+
+Programming with Building Blocks
+
+Programmieren in Blöcken.
+
+=======================================================================
+
+Suchen nach einer Bedingung:   std::find_if
+
+"unary predicate"
+
+Hierzu benötigt man eine Funktion, die einen Parameter hat (Wert aus dem Container),
+überprüft die Bedingung und liefert true/false zurück.
+
+=======================================================================
+
+Frage:  Filtern  ..
+
+A) std::ranges // Neue Bibliothek // C++ 17 ... Filter als sprachliches Mittel enthalten.
+
+B) std::copy_if  // Filtern in der STL
+
+=======================================================================
+
+STL und Performanz:   // Embedded
+
+Ist es wert, aus Gründen der Performanz die STL einzusetze ???????????
+
+Vergleich.
+
+
+Wieso sind die STL-Algorithmen so schnell:
+
+==> std::memset
+
+Memory Set
+
+Es gibt viele Funktionen, die manche Sachen schneller machen:
+
+memcmp
+memcpy
+memmove
+memset
+
+11:05
+-----
