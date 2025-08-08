@@ -1551,3 +1551,132 @@ Einen Eintrag entfernen:
     // true : hat geklappt
 
     // false: hat nicht geklappt.
+
+// ======================================================
+
+Eingabe // Ausgabe:
+-------------------
+
+std::cout:   character output
+
+Ausgabe in die Konsole.
+
+Idee des Operators <<:
+
+Operator <<:
+
+
+Unterschied von
+
+std::cout << "Eine Zeile" << std::endl;
+// es wird ein Zeichen in den internen Puffer von std::cout geschrieben
+// UND der Puffer wird ge-flushed // geleert // Also die Konsole aktualisiert. 
+
+und
+
+std::cout << "Eine Zeile" << '\n';
+// es wird ein Zeichen in den internen Puffer von std::cout geschrieben.
+
+Datei:  std::fstream  // Datei.
+
+=========================================================
+
+Ziel:
+
+    std::cout << myBook << std::endl;
+
+Lösung: operator << überladen
+
+Typ / Argument links:  std::ostream
+Typ / Argument rechts: Phonebook
+
+Da links ein  std::ostream-Objekt (std::cout) erwartet wird,
+muss operator<< als GLOBALE FUNKTION realisiert werden.
+
+Fehlermeldung:
+
+unresolved external symbol
+
+"void __cdecl operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,
+class Phonebook const &)" 
+
+(??6@YAXAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEBVPhonebook@@@Z) 
+
+referenced in function "void __cdecl phone_book(void)" (?phone_book@@YAXXZ)
+
+Überladen  von Operatoren:
+
+operator<<
+
+
+Fehler
+
+'<<': not valid as left operand has type 'void'
+
+================================================================
+
+Meine Klasse hat einen Namen:  Textbox.
+
+Hmmm, kann es da zu Konflikten kommen???
+
+Der Name könnte ja schon vergeben sein.
+
+Antwort:
+
+Man füge die Klasse in einen Namensraum ein:
+
+namespace MyProject
+{
+    class Textbox
+    {
+    };
+}
+
+Folge:
+
+Der Name der Klasse hat sich geändert:
+
+MyProject::Textbox  
+
+Konsequenz:
+
+Will an anderer Stelle diese Klasse verwenden: ==> Textbox
+
+// =============================================================
+
+Aufrufbare Objekte
+
+C++   Vorliebe für Operatoren
+
+Iteratoren:  
+
+++,
+*,
+==, !=
+
+Ausgabe:  << 
+
+C#:
+
+++        => next
+*         => Current
+==, !=    =>Equals
+
+
+=======================================================
+
+Classic  C++
+------------
+
+==>
+
+Modern C++ // C++ 11
+--------------------
+
+Erster Umstieg von Classic C++ nach Modern C++
+
+== auto
+== Lamba
+
+
+

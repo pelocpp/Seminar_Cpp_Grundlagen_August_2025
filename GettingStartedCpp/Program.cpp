@@ -12,6 +12,8 @@ extern void test_stl_vector();
 extern void main_stl_performance();
 extern void zufall();
 extern void phone_book();
+extern void main_Streams();
+extern void aufrufbaresObjekt();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -24,8 +26,7 @@ static void test_static()
 
 int main()
 {
-    phone_book();
+    aufrufbaresObjekt();
 
     return 0;
 }
-

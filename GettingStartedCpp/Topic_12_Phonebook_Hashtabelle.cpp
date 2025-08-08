@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <print>
+#include <algorithm>
 
 
 // Schlüssel: Name
@@ -14,12 +15,19 @@ private:
     std::unordered_map<std::string, size_t> m_book;   // Hash-Tabelle
 
 public:
+    // getter
+    size_t countEntries() const;
+
     bool addEntry(const std::string& name, size_t phone);
+    bool searchEntry(const std::string& name) const;
+    bool getPhonenumber(const std::string& name, size_t& phone) const;
 
-    bool searchEntry(const std::string& name);
-
-    bool getPhonenumber(const std::string& name, size_t& phone);
+    bool removeEntry(const std::string& name);
+    void print() const;
 };
+
+// Output conform to std::cout // globale Funktion
+std::ostream& operator<< (std::ostream& os, const Phonebook& pb);
 
 // ===============================================================
 
@@ -43,9 +51,9 @@ bool Phonebook::addEntry(const std::string& name, size_t phone)
     }
 }
 
-bool Phonebook::searchEntry(const std::string& name)
+bool Phonebook::searchEntry(const std::string& name) const
 {
-    std::unordered_map<std::string, size_t>::iterator pos = m_book.find(name);
+    std::unordered_map<std::string, size_t>::const_iterator pos = m_book.find(name);
 
     if (pos == m_book.end()) {
 
@@ -60,9 +68,9 @@ bool Phonebook::searchEntry(const std::string& name)
 }
 
 
-bool Phonebook::getPhonenumber(const std::string& name, size_t& phone)
+bool Phonebook::getPhonenumber(const std::string& name, size_t& phone) const
 {
-    std::unordered_map<std::string, size_t>::iterator pos = m_book.find(name);
+    std::unordered_map<std::string, size_t>::const_iterator pos = m_book.find(name);
 
     if (pos == m_book.end()) {
 
@@ -85,6 +93,53 @@ bool Phonebook::getPhonenumber(const std::string& name, size_t& phone)
     }
 }
 
+size_t Phonebook::countEntries() const {
+
+    return m_book.size();
+}
+
+bool Phonebook::removeEntry(const std::string& name)
+{
+    size_t count = m_book.erase(name);
+
+    if (count == 1) {
+        std::println("Name {} wurde entfernt", name);
+        return true;
+    }
+    else {
+        std::println("Name {} NICHT gefunden", name);
+        return false;
+    }
+}
+
+void doPrint( const std::pair<const std::string, size_t>& entry)
+{
+    const std::string& name = entry.first;
+    size_t phone = entry.second;
+
+    std::println("  Name {} - Phone: {}", name, phone);
+}
+
+void Phonebook::print() const
+{
+    std::println("My Phonebook:");
+
+    std::for_each(
+        m_book.begin(),
+        m_book.end(),
+        doPrint
+    );
+}
+
+std::ostream& operator<< (std::ostream& os, const Phonebook& pb)
+{
+    pb.print();
+
+    return os;
+}
+
+// ================================================
+
 void phone_book()
 {
     Phonebook myBook;
@@ -95,6 +150,8 @@ void phone_book()
     done = myBook.addEntry("Susi Meier", 345345345);
     done = myBook.addEntry("Anton Wagner", 23525235);
 
+    myBook.print();
+
     bool found = myBook.searchEntry("Susi Meier");
     found = myBook.searchEntry("Gerhard Maier");
 
@@ -104,4 +161,9 @@ void phone_book()
     if (found) {
         std::println("Susi Meier hat die Nummer {}", phoneMaier);
     }
+
+    done = myBook.removeEntry("Susi Meier");
+    done = myBook.removeEntry("Susi Wagner");
+
+    std::cout << myBook << '\n';
 }
