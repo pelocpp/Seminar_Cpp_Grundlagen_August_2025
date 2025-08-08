@@ -37,6 +37,11 @@ void test_stl_vector_01_A()
 
         std::cout << "Value: " << value << std::endl;
     }
+
+    for (auto value : numbers) {
+
+        std::cout << "Value: " << value << std::endl;
+    }
 }
 
 void test_stl_vector_02()
@@ -227,10 +232,18 @@ void test_stl_vector_06()
     numbers.push_back(2);
     numbers.push_back(3);
 
+    // classic
     std::for_each(
         numbers.begin(),
         numbers.end(),
         print
+    );
+
+    // modern / kompakt
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [] (int value) { std::cout << value << std::endl; }
     );
 
     std::cout << "Done." << std::endl;
@@ -251,10 +264,30 @@ void test_stl_vector_07()
     numbers.resize(10);   // nicht mir reserve zu verwechseln
 
     // möchte alle Elemente auf den Wert 1 vorbelegen
+    // classic
     std::for_each(
         numbers.begin(),
         numbers.end(),
-        init
+        init  // 1
+    );
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int value) { std::cout << value << std::endl; }
+    );
+
+    // modern
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int& value) { value = 2; }
+    );
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int value) { std::cout << value << std::endl; }
     );
 
     std::cout << "Done." << std::endl;
@@ -287,13 +320,53 @@ void test_stl_vector_09()
 {
     std::vector<int> numbers;
 
-    numbers.resize(10);   // nicht mir reserve zu verwechseln
+    numbers.resize(5);   // nicht mir reserve zu verwechseln
 
     // Vorbelegen: mit verschiedenen Werten
+    // classic
     std::generate(
         numbers.begin(),
         numbers.end(),
         belegeVor
+    );
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int value) { std::cout << value << std::endl; }
+    );
+
+    // modern C++
+    std::generate(
+        numbers.begin(),
+        numbers.end(),
+        []() { 
+            static int value = 50;   // globale Variable (( nur innerhalb des lambdas sichtbar ))
+            value += 2;
+            return value;
+        }
+    );
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int value) { std::cout << value << std::endl; }
+    );
+
+    // modern C++ - no static
+    std::generate(
+        numbers.begin(),
+        numbers.end(),
+        [value = 100] () mutable -> int {   // Lambda mit Instanzvariable
+            value += 2;
+            return value;
+        }
+    );
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int value) { std::cout << value << std::endl; }
     );
 
     std::cout << "Done." << std::endl;
@@ -351,17 +424,21 @@ void test_stl_vector_11()
     std::generate(
         numbers.begin(),
         numbers.end(),
-        belegeVor
+        [value = 0]() mutable -> int {   // Lambda mit Instanzvariable
+            value += 2;
+            return value;
+        }
     );
 
     // ausgeben
     std::for_each(
         numbers.begin(),
         numbers.end(),
-        print
+        [](int value) { std::cout << value << std::endl; }
     );
 
     // suchen: gibt es Werte groesser 10
+    // classic
     std::vector<int>::iterator found = std::find_if(
         numbers.begin(),
         numbers.end(),
@@ -375,8 +452,25 @@ void test_stl_vector_11()
         std::cout << "Found: " << *found << std::endl;
     }
 
+    // suchen: gibt es Werte groesser 10
+    // Modern C++
+    found = std::find_if(
+        numbers.begin(),
+        numbers.end(),
+        [] (int value)  -> bool { return value > 10; }
+    );
+
+    if (found == numbers.end()) {
+        std::cout << "Not found!" << std::endl;
+    }
+    else {
+        std::cout << "Found: " << *found << std::endl;
+    }
+
     std::cout << "Done." << std::endl;
 }
+
+
 
 bool filter(int elem) {
     return (elem % 2) == 0;
@@ -430,7 +524,8 @@ void test_stl_vector_12()
         numbers.end(),
         // target.begin(),
         std::back_inserter (target),
-        filter
+        //filter
+        [] (int elem) -> bool { return (elem % 2) == 0; }
     );
 
     std::cout << "Result:" << std::endl;

@@ -137,7 +137,7 @@ namespace Lambdas {
         std::sort(
             vec.begin(),
             vec.end(),
-            [&m_flag, &n] (int n1, int n2) {
+            [&m_flag, &n] (int n1, int n2) -> bool {
                 std::cout << "Lambda - vgl. " << n1 << " mit " << n2 << n << std::endl;
                 return (m_flag) ? n1 < n2 : n1 > n2;
             }
@@ -198,25 +198,33 @@ namespace Lambdas {
 
     static void test_07() {
 
-        // defining new variables in the lambda capture:
-        // we can declare a new variable that is only visible
-        // in the scope of the lambda: We do so by defining a variable
-        // in the lambda-capture without specifying its type:
+        //std::sort(
+        //    vec.begin(),
+        //    vec.end(),
+        //    [&m_flag, &n](int n1, int n2) {
+        //        std::cout << "Lambda - vgl. " << n1 << " mit " << n2 << n << std::endl;
+        //        return (m_flag) ? n1 < n2 : n1 > n2;
+        //    }
+        //);
 
-        // lambda with variable definition
-        auto lambda = [variable = 10]() { return variable; };
+        []() {};
+
+        auto nothing = []() {};
+
+        // lambda with member variable definition
+        auto lambda = [variable = 1] () mutable -> int {
+            
+            int localVariable = 0;
+            variable++;
+            return variable;
+        };
+
+        // variable = 99;
+        
+        std::cout << lambda() << std::endl;
+        std::cout << lambda() << std::endl;
         std::cout << lambda() << std::endl;
 
-        // Captures default to 'const value':
-        // The mutable keyword removes the 'const' qualification from all captured variables
-        auto counter = [count = 50]() mutable {
-            ++count;
-            return count;
-            };
-
-        for (size_t i{}; i < 5; ++i) {
-            std::cout << counter() << " ";
-        }
         std::cout << std::endl;
     }
 
@@ -356,19 +364,19 @@ namespace Lambdas {
 void main_lambdas()
 {
     using namespace Lambdas;
-    test_00();
-    test_01();
-    test_02();
-    test_03();
-    test_04();
-    test_05();
-    test_06();
+    //test_00();
+    //test_01();
+    //test_02();
+    //test_03();
+    //test_04();
+    //test_05();
+    //test_06();
     test_07();
-    test_08();
-    test_09();
-    test_10();
-    test_11();
-    test_12();
+    //test_08();
+    //test_09();
+    //test_10();
+    //test_11();
+    //test_12();
 }
 
 // =====================================================================================

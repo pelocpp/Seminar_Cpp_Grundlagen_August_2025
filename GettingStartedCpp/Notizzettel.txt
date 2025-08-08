@@ -1802,8 +1802,79 @@ Frage:
 
 https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Lambda/Lambda.md
 
-13:35
-=====
+========================================================================
+
+Lambdas:
+
+Exakt:  Es sind Objekte - von einer Klasse, deren Typ wir nicht sehen.
+
+Was haben Objekte:
+
+Instanzvariablen.
+
+Hmm, können dann Lambda-Objekte auch Instanzvariablen haben ????
+
+Yes.
+
+========================================================================
+
+Anwendung von Lambdas:
+
+ZB bei Algorithmen.
+
+========================================================================
+
+Wenn man "das" mal sieht:
+
+Starthilfe --- um auf die nächste Treppenstufe zu gelangen.
+
+========================================================================
+
+Frage:
+
+    // classic
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        print
+    );
+
+    // modern / kompakt
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [] (int value) { std::cout << value << std::endl; }
+    );
+
+Technisch gesehen tut das dasselbe ..................
+
+Könnte die Variante mit dem Lambda einen Vorteil haben ???
+
+95%:  Lambda's können vom Compiler // Code-Generator "inline" abgesetzt werden:
+
+      ==> Performanz-Vorteil ist möglich.
+
+=======================================================================
+
+Übung:
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Exercises/Exercises_02_Lambdas.md
+
+
+
+Aufgabe 1: Gerade oder ungerade // teilbar oder nicht teilbar
+
+Aufgabe 3: Quiz mit Lambda-Funktionen
+
+Quiz 1
+Quiz 2
+
+
+Warum nicht 3 und / oder 4: Da sind nochmal "Subtile" Stolperfallen drin,
+da ergibt heute keinen Sinn / generell selten einen Sinn.
+
+
+
 
 
 

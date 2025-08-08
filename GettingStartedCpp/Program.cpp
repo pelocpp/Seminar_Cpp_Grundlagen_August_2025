@@ -18,6 +18,8 @@ extern void main_auto();
 extern void phone_book_with_auto();
 extern void main_brace_initialization();
 extern void main_lambdas();
+extern void test_stl_vector();
+
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -30,7 +32,7 @@ static void test_static()
 
 int main()
 {
-    main_lambdas();
+    test_stl_vector();
 
     return 0;
 }
