@@ -3,6 +3,7 @@ C++ Grundlagen
 Peter Loos
 
 peter.loos@gmx.de
+-----------------
 
 https://github.com/pelocpp
 
@@ -1873,8 +1874,129 @@ Quiz 2
 Warum nicht 3 und / oder 4: Da sind nochmal "Subtile" Stolperfallen drin,
 da ergibt heute keinen Sinn / generell selten einen Sinn.
 
+=========================================================================
+
+C++ 11:
+
+Offensive ==> Optimierung:
+
+Neuen Typus an Referenz:
+ 
+Referenzen für Objekte OHNE Namen:
+
+int& rm = n;
+
+int&& rm = n+m;
+
+// Whyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
+Move-Semantik:
+
+A)
+    ... 460   // am Stack // temporär // anonym // wird freigegeben ..
+    ... 150   // im Vector
 
 
 
+B)  ....620
+    ... 540
 
+
+Kritikpunkte an / bzgl. C++:
+
+Vielen Stellen unnütze Kopien reinrutschen.
+
+STL: Bibliotkek mit Value-Semantik:
+
+std::vector <Person>    // <=== alle als Kopie
+
+std::vector <Person*>   // <=== alle als Zeiger
+
+==================================================
+
+Rule-of-Three
+
+Rule-of-Five:  
+
+
+... 000
+
+
+Habe von der Rule of Five noch nie was gehört ---
+
+Rule of Three: Jepp.
+
+Läuft, möglicheweise unnütze Kopien.
+
+Klassen: mit new / delete?
+
+Rule of Zero: Tatsächlich nichts zu tun !!!
+
+Es sind Zeiger vorhanden, die mit new allokiert wurden.
+
+a) Rule-of-Three: Muss sein, damit es prinzipiell läuft.
+
+b) Unnütze Kopien.
+
+c)  Rule-of-Five: Dann gibt es keine unnützen Kopien mehr.
+
+
+std::move
+
+=====================================================
+
+Smart Pointer:
+
+new / delete:
+
+Problem erst mal nicht, nur: Was ist, wenn delete vergessen wird ....
+
+int* ptr;
+
+ptr = new int ();  // new
+
+delete ptr;        // delete
+
+Idee: Man verstecke 'ptr' in einem Objekt // Hüllenklasse !!!!
+
+Was bringt das ???
+
+{
+     int* ptr = new int ();  // new
+
+     // Hüllenklasse: SmartPtr:
+     SmartPtr sp (ptr);    // Konstruktor
+
+     // ...
+     *sp = 123;
+
+     // Idee:
+     // Destruktor von sp aufgerufen !!!!!!!!!!!!!!!!!!!!!!!
+     // Ansatz // Konzept: Im Destruktor wird delete 'automatisiert' / deterministisch
+     //                    aufgerufen.
+}
+
+Hmmm , will den Zeiger länger als den Scope aufheben ....
+
+Geht:  Man kann SmartPointer verschieben !!!!
+
+Umsetzung:
+
+2 Typen von SmartPointer Klassen:
+
+a) std::unique_ptr:  EIN Besitzer // Keine Kopie // verschieben.
+
+b) std::shared_ptr:  Mehrere Besitzer // es gibt Kopien:
+
+                     Ein std::shared_ptr-Destruktor darf delete erst mal nicht aufrufen.
+
+                     Idee: es werden die Besitzer mitgezählt: Referenzzähler
+
+                     1 => 2 => 3 => 2 => 1 => 0    JETZT wird im Destruktor delete an ptr aufgerufen.
+
+Legacy-SW: Da würde ich nicht von Classic Zeigern (int* // new // delele) umstellen.
+
+Neue SW: ==> Via Smart Pointer.
+
+1 Woche drin ....
 

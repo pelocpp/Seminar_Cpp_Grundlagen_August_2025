@@ -152,6 +152,8 @@
     <ClCompile Include="Topic_17_Phonebook_with_Auto.cpp" />
     <ClCompile Include="Topic_18_Uniform_Initialization.cpp" />
     <ClCompile Include="Topic_19_Lambdas.cpp" />
+    <ClCompile Include="Topic_20_RValue.cpp" />
+    <ClCompile Include="Topic_21_MoveSemantik.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />

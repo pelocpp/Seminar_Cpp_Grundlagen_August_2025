@@ -19,6 +19,8 @@ extern void phone_book_with_auto();
 extern void main_brace_initialization();
 extern void main_lambdas();
 extern void test_stl_vector();
+extern void main_rvalue_lvalue();
+extern void main_move_semantics();
 
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
@@ -32,7 +34,7 @@ static void test_static()
 
 int main()
 {
-    test_stl_vector();
+    main_rvalue_lvalue();
 
     return 0;
 }
