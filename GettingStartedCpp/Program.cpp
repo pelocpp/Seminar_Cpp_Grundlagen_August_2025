@@ -14,6 +14,10 @@ extern void zufall();
 extern void phone_book();
 extern void main_Streams();
 extern void aufrufbaresObjekt();
+extern void main_auto();
+extern void phone_book_with_auto();
+extern void main_brace_initialization();
+extern void main_lambdas();
 
 extern long nextAccountNumber;    // extern-Deklaration einer glob. Variablen
 
@@ -26,7 +30,7 @@ static void test_static()
 
 int main()
 {
-    aufrufbaresObjekt();
+    main_lambdas();
 
     return 0;
 }

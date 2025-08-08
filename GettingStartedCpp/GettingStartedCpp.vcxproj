@@ -148,6 +148,10 @@
     <ClCompile Include="Topic_13_Input_Output.cpp" />
     <ClCompile Include="Topic_14_Namespaces.cpp" />
     <ClCompile Include="Topic_15_Aufrufbares_Objekt.cpp" />
+    <ClCompile Include="Topic_16_auto.cpp" />
+    <ClCompile Include="Topic_17_Phonebook_with_Auto.cpp" />
+    <ClCompile Include="Topic_18_Uniform_Initialization.cpp" />
+    <ClCompile Include="Topic_19_Lambdas.cpp" />
     <ClCompile Include="Uebung_01_BankAccount.cpp" />
     <ClCompile Include="Uebung_01_BankAccount_Test.cpp" />
     <ClCompile Include="Uebung_02_Zeichenketten.cpp" />

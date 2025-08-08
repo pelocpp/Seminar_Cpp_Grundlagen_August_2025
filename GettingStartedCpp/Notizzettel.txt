@@ -2,6 +2,21 @@ C++ Grundlagen
 
 Peter Loos
 
+peter.loos@gmx.de
+
+https://github.com/pelocpp
+
+Classic C++:
+
+Einführung:
+
+https://github.com/pelocpp/cpp_introduction
+
+
+Modern C++:
+
+https://github.com/pelocpp/cpp_modern
+
 ================
 
 12.30: 
@@ -1673,10 +1688,122 @@ Classic  C++
 Modern C++ // C++ 11
 --------------------
 
+Der rote Faden // Überblick  ===> Agenda
+
 Erster Umstieg von Classic C++ nach Modern C++
 
 == auto
 == Lamba
+== Brace Init
+
+=======================================================
+
+== auto
+
+Go for auto
+
+    static decltype ( std::declval<T>() + std::declval<U>() ) 
+
+
+Stackoverflow:    
+
+    std::declval  ====> decltype  ===> Typ definiert ..mit Template Parametern
+
+
+
+============================================================
+
+Vorsicht:
+
+warning C4172: returning address of local variable or temporary : tmp
+
+============================================================
+
+Neue Syntax der Initialisierung:
+--------------------------------
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/BraceInitialization/BraceInitialization.md
+
+Hinweis:
+
+        int intArray7[10]{ };   // <========== Vorbelegung mit NULL-Wert
+00007FF6B45363F9  lea         rax,[intArray7]  
+00007FF6B4536400  mov         rdi,rax  
+00007FF6B4536403  xor         eax,eax  
+00007FF6B4536405  mov         ecx,28h    // ist 40 Bytes == 10 int // 1 int == 4 byte
+00007FF6B453640A  rep stos    byte ptr [rdi]  
+
+=========================================================
+
+Lambdas
+=======
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Lambda/Lambda.md
+
+Was ist ein Lambda ???
+
+Umgangsprachlich: eine anonyme Funktion
+Exakt:            ein Objekt einer Klasse, deren Defintion vor uns versteckt ist.
+
+                  ein Objekt einer anonymen Klasse
+
+Modern C++ ==> Classic C++ Konzepte
+
+Historisch:
+
+std::sort  // STL
+
+== Container sortieren
+
+== Zum Vergleichen der Elemente / Objekte:
+
+   "Dritte" Parameter:
+
+   a) globale Funktion // OO ;(  // diese steht im Quellcode woanders ...
+
+   b) Aufrufbares Objekt         // Bessere OO
+
+   c) Was ist ein Lambda:        Ein aufrufbares Objekt , mit einer anderen Syntax!
+
+                 Neue Syntax:  Der STL-Algorithmus und die notwendige Funktion
+                               stehen an derselben Stelle.
+
+                               Übersichtlichkeit
+
+// ====================================================================
+
+Tool  Cpp Insights
+
+Ist kein Online-Compiler (  C++ ==> Maschinencode + Ausführung)
+
+sondern: Prä-Compiler:
+
+C++ - Quelltext in Modern C++ Schreibweise ==> C++ - Quelltext in Classic C++ Schreibweise
+
+Will ich C++ und Lambdas wirklich verstehen: Dann ja.
+
+1. Feature von Lambdas:
+
+Lokale Variablen aus dem umgebenden Scope
+können im Lambda-Objekt verwendet // angesprochen werden:
+
+Wie ???
+
+a) als Kopie
+
+b) als Referenz - Zugriff auf das Original.
+
+Wozu:
+
+Naja, sind die  Variablen aus dem umgebenden Scope GROSS,
+dann kann man Kopien vermeiden.
+
+Frage:
+
+https://github.com/pelocpp/cpp_modern/blob/master/GeneralSnippets/Lambda/Lambda.md
+
+13:35
+=====
 
 
 

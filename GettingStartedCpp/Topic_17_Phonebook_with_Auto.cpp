@@ -4,10 +4,12 @@
 #include <print>
 #include <algorithm>
 
+
 // Schlüssel: Name
 // Wert:      Nummer // size_t
 
-namespace PhoneBook_Classic {
+
+namespace PhoneBook_Modern_Cpp {
 
     // Header-File .h
     class Phonebook
@@ -38,9 +40,7 @@ namespace PhoneBook_Classic {
         std::pair<const std::string, size_t> entry(name, phone);
 
         // ein zweites std::pair zum Auswerten, ob das Einfügen geklappt hat
-        std::pair < std::unordered_map<std::string, size_t>::iterator, bool > result =
-
-            m_book.insert(entry);
+        auto result = m_book.insert(entry);
 
         if (result.second == true) {
             std::println("Hat geklappt");
@@ -54,7 +54,9 @@ namespace PhoneBook_Classic {
 
     bool Phonebook::searchEntry(const std::string& name) const
     {
-        std::unordered_map<std::string, size_t>::const_iterator pos = m_book.find(name);
+        // std::unordered_map<std::string, size_t>::const_iterator pos_0 = m_book.find(name);
+
+        auto pos = m_book.find(name);
 
         if (pos == m_book.end()) {
 
@@ -71,7 +73,7 @@ namespace PhoneBook_Classic {
 
     bool Phonebook::getPhonenumber(const std::string& name, size_t& phone) const
     {
-        std::unordered_map<std::string, size_t>::const_iterator pos = m_book.find(name);
+        auto pos = m_book.find(name);
 
         if (pos == m_book.end()) {
 
@@ -139,16 +141,15 @@ namespace PhoneBook_Classic {
         return os;
     }
 
+
 }
 
 
 // ================================================
 
-void phone_book()
+void phone_book_with_auto()
 {
-    using namespace PhoneBook_Classic;
-
-    Phonebook myBook;
+    PhoneBook_Modern_Cpp::Phonebook myBook;
 
     bool done;
 
